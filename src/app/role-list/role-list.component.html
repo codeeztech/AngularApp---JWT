@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2>Role List</h2>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped" >
+            <thead>
+              <tr>
+                <th>Role Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let role of roles | async">
+                <td>{{role.roleName}}</td>
+                <td><button (click)="deleteRole(role._id)" class="btn btn-danger">Delete</button>
+                    <button (click)="roleDetails(role._id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                    <button (click)="updateRole(role._id)" class="btn btn-success" style="margin-left: 10px">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

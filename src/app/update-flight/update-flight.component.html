@@ -1,0 +1,81 @@
+<h3>Create Flight</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="flight.firstName" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Last Name</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="flight.lastName" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">From</label>
+      <select class="custom-select" name="ddlFrom" [(ngModel)]="flight.from" #from="ngModel"  class="custom-select"
+          [class.is-invalid]="arrivalHasError && from.touched" (blur)=validateArrival(from.value) (change)=validateArrival(from.value)>
+          <option selected value="default">Select Arrival</option>
+          <option *ngFor="let from of froms" >{{from}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="!arrivalHasError || from.untouched">Please choose arrival</small>
+    </div>
+
+    <div class="form-group">
+      <label for="name">To</label>
+      <select class="custom-select" name="ddlTo" [(ngModel)]="flight.to" #to="ngModel"  class="custom-select"
+          [class.is-invalid]="destinationHasError && to.touched" (blur)=validateDestination(to.value) (change)=validateDestination(to.value)>
+          <option selected value="default">Select Destination</option>
+          <option *ngFor="let to of tos" >{{to}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="!destinationHasError || to.untouched">Please choose destination</small>
+    </div>
+
+      <div class="mb-3">
+        <label>Flight Type</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="rbStandard" value="Standard" [(ngModel)]="flight.flight_type">
+          <label class="form-check-label">Standard</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name=rbSaver value="Saver" [(ngModel)]="flight.flight_type">
+          <label class="form-check-label">Saver</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name=rbPremium value="Premium" [(ngModel)]="flight.flight_type">
+            <label class="form-check-label">Premium</label>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input type="text" class="form-control" id="emailId" required [(ngModel)]="flight.emailId" name="emailId">
+      </div>
+
+      <div class="form-group">
+        <label>Mobile</label>
+        <input type="text" class="form-control" #mobile="ngModel" required
+         pattern="^\d{10}$" [class.is-valid]="mobile.valid && mobile.touched"
+         [class.is-invalid]="mobile.invalid && mobile.touched"
+         name="txtmobile" [(ngModel)]="flight.mobile">
+         <!-- <small class="text-danger" [class.d-none]="mobile.valid || mobile.untouched">Phone number is required and must be 10 digits</small> -->
+      <div *ngIf="mobile.errors && (mobile.invalid || mobile.touched)">
+        <small class="text-danger" *ngIf="mobile.errors.required">Phone number is required</small>
+        <small class="text-danger" *ngIf="mobile.errors.pattern">Phone number must be 10 digits</small>
+      </div>
+        </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="cbActive" [(ngModel)]="flight.active"> 
+            <label class="form-check-label"></label>
+            Active
+          </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newFlight()">Add</button> -->
+</div>

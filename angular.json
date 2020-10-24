@@ -24,9 +24,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [ "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tpconnects-app"
+    }
+  },
+  "defaultProject": "tpconnects-app",
+  "cli": {
+    "analytics": "a778022a-2731-4a60-912e-83b39f800fe6"
+  }
 }

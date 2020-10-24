@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>User List</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped" >
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Name</th>
+              <th>Role Id</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.username}}</td>
+              <td>{{user.password}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.roleId}}</td>
+            
+              <td><button (click)="deleteUser(user._id)" class="btn btn-danger">Delete</button>
+                  <button (click)="userDetails(user._id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                  <button (click)="updateUser(user._id)" class="btn btn-success" style="margin-left: 10px">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

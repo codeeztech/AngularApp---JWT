@@ -1,0 +1,19 @@
+{
+  "name": "tpconnects-server",
+  "version": "1.0.0",
+  "description": "tpconnects-test by Shahroz Khan",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server"
+  },
+  "author": "Shahroz Khan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.9"
+  }
+}

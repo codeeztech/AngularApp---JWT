@@ -1,0 +1,12 @@
+<h2>Role Details</h2> 
+
+<hr/>
+<div *ngIf="role">
+  <div>
+    <label><b>Role: </b></label> {{role.roleName}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Role List</button><br>
